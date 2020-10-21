@@ -13,32 +13,13 @@ class MyApp extends StatelessWidget {
       home: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.teal,
-          body: Row(
+          body: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: 100.0,
-                color: Colors.red,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 100.0,
-                    height: 100.0,
-                    color: Colors.yellow,
-                  ),
-                  Container(
-                    width: 100.0,
-                    height: 100.0,
-                    color: Colors.green,
-                  ),
-                ],
-              ),
-              Container(
-                width: 100.0,
-                color: Colors.blue,
-              ),
+              CircleAvatar(
+                radius: 50.0,
+                backgroundImage: AssetImage('images/stefania_mak_icon.png'),
+              )
             ],
           ),
         ),
