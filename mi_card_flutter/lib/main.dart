@@ -39,48 +39,32 @@ class MyApp extends StatelessWidget {
                     color: _lightMainColor,
                     letterSpacing: 2.5),
               ),
-              Container(
-                padding: EdgeInsets.all(10.0),
+              Card(
                 margin: EdgeInsets.symmetric(horizontal: 80.0, vertical: 20.0),
                 color: _lightMainColor,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
+                child: ListTile(
+                    leading: Icon(
                       Icons.phone,
                       color: Colors.black,
                     ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Text(
+                    title: Text(
                       '+30 123 456 7890',
                       style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
+                    )),
               ),
-              Container(
-                padding: EdgeInsets.all(10.0),
+              Card(
                 margin: EdgeInsets.symmetric(horizontal: 80.0),
                 color: _lightMainColor,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
+                child: ListTile(
+                    leading: Icon(
                       Icons.email,
                       color: Colors.black,
                     ),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Text(
+                    title: Text(
                       'aaa@gmail.com',
                       style: TextStyle(color: Colors.black),
-                    )
-                  ],
-                ),
-              )
+                    )),
+              ),
             ],
           ),
         ),
