@@ -24,6 +24,7 @@ class DicePage extends StatelessWidget {
           Expanded(
             child: FlatButton(
               child: Image.asset('images/dice1.png'),
+              // void callback , like anonymous function
               onPressed: () {
                 print('aaaa');
               },
@@ -42,4 +43,3 @@ class DicePage extends StatelessWidget {
     );
   }
 }
-// void callback , like anonymous function
