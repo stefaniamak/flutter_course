@@ -34,7 +34,7 @@ class _DicePageState extends State<DicePage> {
               // void callback , like anonymous function
               onPressed: () {
                 setState(() {
-                  leftNumb = Random().nextInt(6) + 1;
+                  leftNumb = randomNumb(rightNumb);
                   print('Left number: $leftNumb');
                 });
               },
@@ -45,7 +45,7 @@ class _DicePageState extends State<DicePage> {
             child: FlatButton(
               onPressed: () {
                 setState(() {
-                  rightNumb = Random().nextInt(6) + 1;
+                  rightNumb = randomNumb(rightNumb);
                   print('Right number: $rightNumb');
                 });
               },
@@ -55,5 +55,9 @@ class _DicePageState extends State<DicePage> {
         ],
       ),
     );
+  }
+
+  int randomNumb(int numb) {
+    return numb = Random().nextInt(6) + 1;
   }
 }
