@@ -4,9 +4,13 @@ import 'package:audioplayers/audio_cache.dart';
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
+  void playSound(int number) {
+    final player = AudioCache();
+    player.play('note$number.wav');
+  }
+
   @override
   Widget build(BuildContext context) {
-    final player = AudioCache();
     return MaterialApp(
       home: Scaffold(
         body: SafeArea(
@@ -15,49 +19,49 @@ class XylophoneApp extends StatelessWidget {
               FlatButton(
                 color: Colors.red,
                 onPressed: () {
-                  player.play('note1.wav');
+                  playSound(1);
                 },
                 child: Center(child: Icon(Icons.play_arrow)),
               ),
               FlatButton(
                 color: Colors.orange,
                 onPressed: () {
-                  player.play('note2.wav');
+                  playSound(2);
                 },
                 child: Center(child: Icon(Icons.play_arrow)),
               ),
               FlatButton(
                 color: Colors.yellow,
                 onPressed: () {
-                  player.play('note3.wav');
+                  playSound(3);
                 },
                 child: Center(child: Icon(Icons.play_arrow)),
               ),
               FlatButton(
                 color: Colors.green,
                 onPressed: () {
-                  player.play('note4.wav');
+                  playSound(4);
                 },
                 child: Center(child: Icon(Icons.play_arrow)),
               ),
               FlatButton(
                 color: Colors.greenAccent,
                 onPressed: () {
-                  player.play('note5.wav');
+                  playSound(5);
                 },
                 child: Center(child: Icon(Icons.play_arrow)),
               ),
               FlatButton(
                 color: Colors.blue,
                 onPressed: () {
-                  player.play('note6.wav');
+                  playSound(6);
                 },
                 child: Center(child: Icon(Icons.play_arrow)),
               ),
               FlatButton(
                 color: Colors.deepPurpleAccent,
                 onPressed: () {
-                  player.play('note7.wav');
+                  playSound(7);
                 },
                 child: Center(child: Icon(Icons.play_arrow)),
               ),
