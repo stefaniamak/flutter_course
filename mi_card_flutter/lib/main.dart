@@ -9,11 +9,13 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Color _darkMainColor = Colors.white10;
+    Color _lightMainColor = Colors.white;
     return MaterialApp(
-      home: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.white10,
-          body: Column(
+      home: Scaffold(
+        backgroundColor: _darkMainColor,
+        body: SafeArea(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -27,12 +29,57 @@ class MyApp extends StatelessWidget {
                     fontFamily: 'Grenze',
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
+                    color: _lightMainColor),
               ),
               Text(
                 'Android App Developer',
                 style: TextStyle(
-                    fontFamily: 'Turret', fontSize: 15.0, color: Colors.white),
+                    fontFamily: 'Turret',
+                    fontSize: 15.0,
+                    color: _lightMainColor,
+                    letterSpacing: 2.5),
+              ),
+              Container(
+                padding: EdgeInsets.all(10.0),
+                margin: EdgeInsets.symmetric(horizontal: 80.0, vertical: 20.0),
+                color: _lightMainColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.phone,
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      '+30 123 456 7890',
+                      style: TextStyle(color: Colors.black),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(10.0),
+                margin: EdgeInsets.symmetric(horizontal: 80.0),
+                color: _lightMainColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.email,
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      width: 10.0,
+                    ),
+                    Text(
+                      'aaa@gmail.com',
+                      style: TextStyle(color: Colors.black),
+                    )
+                  ],
+                ),
               )
             ],
           ),
