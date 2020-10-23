@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'quiz_brain.dart';
-
-QuizBrain quizBrain = new QuizBrain();
+import 'package:quizzler/quiz_brain.dart';
+import 'package:quizzler/score_keeper.dart';
 
 void main() => runApp(Quizzler());
 
@@ -28,16 +27,17 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List<Icon> scoreKeeper = [Icon(Icons.arrow_forward)];
+  final QuizBrain _quizBrain = QuizBrain();
+  final ScoreKeeper _scoreKeeper = ScoreKeeper();
 
-  void pointHandler(bool answer) {
-    addPoints(answer);
-    quizBrain.nextQuestion(context);
+  void _pointHandler(bool answer) {
+    _addPoints(answer);
+    _quizBrain.nextQuestion(context);
   }
 
-  void addPoints(bool answer) => answer == quizBrain.getAnswer()
-      ? scoreKeeper.add(Icon(Icons.check, color: Colors.green))
-      : scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+  void _addPoints(bool answer) => answer == _quizBrain.getAnswer()
+      ? _scoreKeeper.score.add(Icon(Icons.check, color: Colors.green))
+      : _scoreKeeper.score.add(Icon(Icons.close, color: Colors.red));
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quizBrain.getQuestion(),
+                _quizBrain.getQuestion(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -77,7 +77,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 setState(() {
-                  pointHandler(true);
+                  _pointHandler(true);
                 });
               },
             ),
@@ -98,14 +98,14 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked false.
                 setState(() {
-                  pointHandler(false);
+                  _pointHandler(false);
                 });
               },
             ),
           ),
         ),
         Row(
-          children: scoreKeeper,
+          children: _scoreKeeper.score,
         )
       ],
     );

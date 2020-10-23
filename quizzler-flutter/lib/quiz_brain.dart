@@ -4,12 +4,16 @@ import 'questions.dart';
 import 'game_over.dart';
 
 class QuizBrain {
-  int qNum = 0;
-  GameOver _gameOver = new GameOver();
+  QuizBrain._();
 
-  void nextQuestion(BuildContext context) =>
-      qNum + 1 < _questionsBank.length ? qNum++ : _gameOver.gameOver(context);
+  static QuizBrain _instance = QuizBrain._();
 
+  // new QuizBrain();
+  factory QuizBrain() {
+    return _instance;
+  }
+
+  int _qNum = 0;
   List<Question> _questionsBank = [
     Question('You can lead a cow down stairs but not up stairs.', false),
     Question('Approximately one quarter of human bones are in the feet.', true),
@@ -32,20 +36,27 @@ class QuizBrain {
     Question(
         'The total surface area of two human lungs is approximately 70 square metres.',
         true),
-    Question('Google was originally called \"Backrub\".', true),
-    Question(
-        'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
-        true),
-    Question(
-        'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
-        true),
+    // Question('Google was originally called \"Backrub\".', true),
+    // Question(
+    //     'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
+    //     true),
+    // Question(
+    //     'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
+    //     true),
   ];
 
+  void nextQuestion(BuildContext context) =>
+      _qNum + 1 < _questionsBank.length ? _qNum++ : GameOver.gameOver(context);
+
   String getQuestion() {
-    return _questionsBank[qNum].question;
+    return _questionsBank[_qNum].question;
   }
 
   bool getAnswer() {
-    return _questionsBank[qNum].answer;
+    return _questionsBank[_qNum].answer;
+  }
+
+  void resetAnswers() {
+    _qNum = 0;
   }
 }
