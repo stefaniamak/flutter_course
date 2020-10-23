@@ -1,8 +1,14 @@
+import 'package:flutter/cupertino.dart';
+
 import 'questions.dart';
+import 'game_over.dart';
 
 class QuizBrain {
   int qNum = 0;
-  void nextQuestion() => qNum + 1 < _questionsBank.length ? qNum++ : null;
+  GameOver _gameOver = new GameOver();
+
+  void nextQuestion(BuildContext context) =>
+      qNum + 1 < _questionsBank.length ? qNum++ : _gameOver.gameOver(context);
 
   List<Question> _questionsBank = [
     Question('You can lead a cow down stairs but not up stairs.', false),

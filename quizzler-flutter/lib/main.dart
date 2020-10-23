@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'quiz_brain.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = new QuizBrain();
 
@@ -33,14 +32,12 @@ class _QuizPageState extends State<QuizPage> {
 
   void pointHandler(bool answer) {
     addPoints(answer);
-    quizBrain.nextQuestion();
+    quizBrain.nextQuestion(context);
   }
 
   void addPoints(bool answer) => answer == quizBrain.getAnswer()
       ? scoreKeeper.add(Icon(Icons.check, color: Colors.green))
       : scoreKeeper.add(Icon(Icons.close, color: Colors.red));
-
-  void gameOver() {}
 
   @override
   Widget build(BuildContext context) {
