@@ -34,14 +34,14 @@ class _QuizPageState extends State<QuizPage> {
   ];
   List<bool> answers = [false, true, true];
 
-  void pointHandler() {
-    addPoints();
+  void pointHandler(bool answer) {
+    addPoints(answer);
     nextQuestion();
   }
 
-  void addPoints() {
-    scoreKeeper.add(Icon(Icons.add));
-  }
+  void addPoints(bool answer) => answer == answers[$qNum]
+      ? scoreKeeper.add(Icon(Icons.check, color: Colors.green))
+      : scoreKeeper.add(Icon(Icons.close, color: Colors.red));
 
   void nextQuestion() => $qNum + 1 < questions.length ? $qNum++ : gameOver();
 
@@ -85,7 +85,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked true.
                 setState(() {
-                  pointHandler();
+                  pointHandler(true);
                 });
               },
             ),
@@ -106,7 +106,7 @@ class _QuizPageState extends State<QuizPage> {
               onPressed: () {
                 //The user picked false.
                 setState(() {
-                  pointHandler();
+                  pointHandler(false);
                 });
               },
             ),
