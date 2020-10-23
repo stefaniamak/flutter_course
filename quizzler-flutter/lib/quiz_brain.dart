@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-import 'questions.dart';
+import 'models/question.dart';
 import 'game_over.dart';
 
-class QuizBrain {
+class QuizBrain with ChangeNotifier {
   QuizBrain._();
 
   static QuizBrain _instance = QuizBrain._();
@@ -36,19 +36,19 @@ class QuizBrain {
     Question(
         'The total surface area of two human lungs is approximately 70 square metres.',
         true),
-    // Question('Google was originally called \"Backrub\".', true),
-    // Question(
-    //     'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
-    //     true),
-    // Question(
-    //     'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
-    //     true),
+    Question('Google was originally called \"Backrub\".', true),
+    Question(
+        'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
+        true),
+    Question(
+        'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
+        true),
   ];
 
   void nextQuestion(BuildContext context) =>
       _qNum + 1 < _questionsBank.length ? _qNum++ : GameOver.gameOver(context);
 
-  String getQuestion() {
+  String getQuestionText() {
     return _questionsBank[_qNum].question;
   }
 
@@ -56,7 +56,12 @@ class QuizBrain {
     return _questionsBank[_qNum].answer;
   }
 
+  Question getQuestion() {
+    return _questionsBank[_qNum];
+  }
+
   void resetAnswers() {
     _qNum = 0;
+    notifyListeners();
   }
 }

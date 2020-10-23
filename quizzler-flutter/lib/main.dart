@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quizzler/models/answer.dart';
+import 'package:quizzler/models/question.dart';
 import 'package:quizzler/quiz_brain.dart';
 import 'package:quizzler/score_keeper.dart';
 
@@ -30,14 +32,24 @@ class _QuizPageState extends State<QuizPage> {
   final QuizBrain _quizBrain = QuizBrain();
   final ScoreKeeper _scoreKeeper = ScoreKeeper();
 
-  void _pointHandler(bool answer) {
-    _addPoints(answer);
+  void _pointHandler(bool userAnswer) {
+    _addPoints(userAnswer);
     _quizBrain.nextQuestion(context);
   }
 
-  void _addPoints(bool answer) => answer == _quizBrain.getAnswer()
-      ? _scoreKeeper.score.add(Icon(Icons.check, color: Colors.green))
-      : _scoreKeeper.score.add(Icon(Icons.close, color: Colors.red));
+  void _addPoints(bool userAnswer) => _scoreKeeper.onUserAnswered(userAnswer);
+
+  @override
+  void initState() {
+    super.initState();
+    _scoreKeeper.addListener(() {
+      setState(() {});
+    });
+
+    _quizBrain.addListener(() {
+      setState(() {});
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +63,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                _quizBrain.getQuestion(),
+                _quizBrain.getQuestionText(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -104,8 +116,19 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        Row(
-          children: _scoreKeeper.score,
+        Container(
+          height: 30,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            // [List].map returns Iterable
+            children: _scoreKeeper.answers.map((answer) {
+              if (answer.isCorrect()) {
+                return Icon(Icons.check, color: Colors.green);
+              } else {
+                return Icon(Icons.close, color: Colors.red);
+              }
+            }).toList(),
+          ),
         )
       ],
     );

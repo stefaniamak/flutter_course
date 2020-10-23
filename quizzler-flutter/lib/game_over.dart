@@ -13,12 +13,18 @@ class GameOver {
         title: '- End of quiz -',
         desc: 'Good job fella!',
         buttons: [
-          DialogButton(child: Text('Start over'), onPressed: () => endGame())
+          DialogButton(
+            child: Text('Start over'),
+            onPressed: () {
+              endGame();
+              Navigator.of(context).pop();
+            },
+          )
         ]).show();
   }
 
   static void endGame() {
     quizBrain.resetAnswers();
-    _scoreKeeper.resetIcons();
+    //_scoreKeeper.resetIcons();
   }
 }
