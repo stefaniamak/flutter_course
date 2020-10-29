@@ -44,6 +44,20 @@ class QuizBrain with ChangeNotifier {
     Question(
         'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
         true),
+    // repeated:
+    Question(
+        'The loudest sound produced by any animal is 188 decibels. That animal is the African Elephant.',
+        false),
+    Question(
+        'The total surface area of two human lungs is approximately 70 square metres.',
+        true),
+    Question('Google was originally called \"Backrub\".', true),
+    Question(
+        'Chocolate affects a dog\'s heart and nervous system; a few ounces are enough to kill a small dog.',
+        true),
+    Question(
+        'In West Virginia, USA, if you accidentally hit an animal with your car, you are free to take it home to eat.',
+        true),
   ];
 
   void nextQuestion(BuildContext context, ScoreKeeper scoreKeeper) =>

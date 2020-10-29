@@ -3,10 +3,16 @@ import 'models/answer.dart';
 
 class ScoreList with ChangeNotifier {
   //ScoreList();
+  ScrollController _scrollController = ScrollController();
+
+  _scrollToBottom() {
+    _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+  }
 
   ListView scoreListUI(List<Answer> answers) {
     return ListView(
       scrollDirection: Axis.horizontal,
+      controller: _scrollController,
       // [List].map returns Iterable
       children: answers.map((answer) {
         if (answer.isCorrect()) {
@@ -19,6 +25,7 @@ class ScoreList with ChangeNotifier {
   }
 
   void refreshList() {
+    _scrollToBottom();
     notifyListeners();
   }
 
