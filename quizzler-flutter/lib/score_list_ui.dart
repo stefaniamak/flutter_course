@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'models/answer.dart';
 
 class ScoreList with ChangeNotifier {

@@ -37,7 +37,7 @@ class _QuizPageState extends State<QuizPage> {
 
   void _pointHandler(bool userAnswer) {
     _addPoints(userAnswer);
-    _quizBrain.nextQuestion(context);
+    _quizBrain.nextQuestion(context, _scoreKeeper);
     _scoreList.refreshList();
   }
 

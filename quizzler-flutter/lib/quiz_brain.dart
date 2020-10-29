@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:quizzler/score_keeper.dart';
 
 import 'models/question.dart';
 import 'game_over.dart';
@@ -45,8 +46,10 @@ class QuizBrain with ChangeNotifier {
         true),
   ];
 
-  void nextQuestion(BuildContext context) =>
-      _qNum + 1 < _questionsBank.length ? _qNum++ : GameOver.gameOver(context);
+  void nextQuestion(BuildContext context, ScoreKeeper scoreKeeper) =>
+      _qNum + 1 < _questionsBank.length
+          ? _qNum++
+          : GameOver.gameOver(context, scoreKeeper);
 
   String getQuestionText() {
     return _questionsBank[_qNum].question;
