@@ -125,17 +125,12 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
         Container(
-          height: 30,
-          child: ListView(
-              scrollDirection: Axis.horizontal,
-              // [List].map returns Iterable
-              children: _scoreList.scoreListUI(_scoreKeeper.answers)),
-        ),
+            height: 30, child: _scoreList.scoreListUI(_scoreKeeper.answers)),
       ],
     );
   }
 }
-
+// _scoreList.scoreListUI(_scoreKeeper.answers))
 /*
 question1: 'You can lead a cow down stairs but not up stairs.', false,
 question2: 'Approximately one quarter of human bones are in the feet.', true,

@@ -5,14 +5,18 @@ import 'models/answer.dart';
 class ScoreList with ChangeNotifier {
   //ScoreList();
 
-  List<Icon> scoreListUI(List<Answer> answers) {
-    return answers.map((answer) {
-      if (answer.isCorrect()) {
-        return Icon(Icons.check, color: Colors.green);
-      } else {
-        return Icon(Icons.close, color: Colors.red);
-      }
-    }).toList();
+  ListView scoreListUI(List<Answer> answers) {
+    return ListView(
+      scrollDirection: Axis.horizontal,
+      // [List].map returns Iterable
+      children: answers.map((answer) {
+        if (answer.isCorrect()) {
+          return Icon(Icons.check, color: Colors.green);
+        } else {
+          return Icon(Icons.close, color: Colors.red);
+        }
+      }).toList(),
+    );
   }
 
   void refreshList() {
