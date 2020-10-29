@@ -3,6 +3,8 @@ import 'package:quizzler/models/answer.dart';
 import 'package:quizzler/models/question.dart';
 import 'package:quizzler/quiz_brain.dart';
 import 'package:quizzler/score_keeper.dart';
+import 'package:quizzler/score_list_ui.dart';
+import 'score_keeper.dart';
 
 void main() => runApp(Quizzler());
 
@@ -31,10 +33,12 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
   final QuizBrain _quizBrain = QuizBrain();
   final ScoreKeeper _scoreKeeper = ScoreKeeper();
+  final ScoreList _scoreList = ScoreList();
 
   void _pointHandler(bool userAnswer) {
     _addPoints(userAnswer);
     _quizBrain.nextQuestion(context);
+    _scoreList.refreshList();
   }
 
   void _addPoints(bool userAnswer) => _scoreKeeper.onUserAnswered(userAnswer);
@@ -47,6 +51,10 @@ class _QuizPageState extends State<QuizPage> {
     });
 
     _quizBrain.addListener(() {
+      setState(() {});
+    });
+
+    _scoreList.addListener(() {
       setState(() {});
     });
   }
@@ -119,17 +127,10 @@ class _QuizPageState extends State<QuizPage> {
         Container(
           height: 30,
           child: ListView(
-            scrollDirection: Axis.horizontal,
-            // [List].map returns Iterable
-            children: _scoreKeeper.answers.map((answer) {
-              if (answer.isCorrect()) {
-                return Icon(Icons.check, color: Colors.green);
-              } else {
-                return Icon(Icons.close, color: Colors.red);
-              }
-            }).toList(),
-          ),
-        )
+              scrollDirection: Axis.horizontal,
+              // [List].map returns Iterable
+              children: _scoreList.scoreListUI(_scoreKeeper.answers)),
+        ),
       ],
     );
   }
