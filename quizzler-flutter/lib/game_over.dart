@@ -28,7 +28,7 @@ class GameOver {
   static void endGame(ScoreKeeper scoreKeeper) {
     _quizBrain.resetAnswers();
     scoreKeeper.resetGame();
-    _scoreList.refreshList();
+    _scoreList.restartList();
     //_scoreKeeper.resetIcons();
   }
 }
