@@ -34,11 +34,18 @@ class _QuizPageState extends State<QuizPage> {
   final QuizBrain _quizBrain = QuizBrain();
   final ScoreKeeper _scoreKeeper = ScoreKeeper();
   final ScoreList _scoreList = ScoreList();
+  // ScrollController _scrollController;
+  // bool _listNotEmpty = true;
+
+  // scrollToBottom() {
+  //   _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+  // }
 
   void _pointHandler(bool userAnswer) {
     _addPoints(userAnswer);
     _quizBrain.nextQuestion(context, _scoreKeeper);
     _scoreList.refreshList();
+    //_scrollToBottom();
   }
 
   void _addPoints(bool userAnswer) => _scoreKeeper.onUserAnswered(userAnswer);
@@ -46,9 +53,20 @@ class _QuizPageState extends State<QuizPage> {
   @override
   void initState() {
     super.initState();
-    _scoreKeeper.addListener(() {
-      setState(() {});
-    });
+
+    // WidgetsBinding.instance.addPostFrameCallback((_) => scrollToBottom());
+    //
+    // _scrollController = ScrollController()
+    //   ..addListener(() {
+    //     print('listener test score');
+    //     setState(() {
+    //       //_scrollToBottom();
+    //     });
+    //   });
+
+    // _scoreKeeper.addListener(() {
+    //   setState(() {});
+    // });
 
     _quizBrain.addListener(() {
       setState(() {});
@@ -126,6 +144,7 @@ class _QuizPageState extends State<QuizPage> {
         ),
         Container(
             height: 30, child: _scoreList.scoreListUI(_scoreKeeper.answers)),
+        //_scoreList.scoreListUI(_scoreKeeper.answers)),
       ],
     );
   }

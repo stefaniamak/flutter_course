@@ -4,12 +4,14 @@ import 'models/answer.dart';
 class ScoreList with ChangeNotifier {
   //ScoreList();
   ScrollController _scrollController = ScrollController();
-  bool _listNotEmpty = true;
+  bool _listNotEmpty = false;
 
-  _scrollToBottom() {
+  scrollToBottom() {
     if (_listNotEmpty) {
       _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      // print('scrolling in the method');
     }
+    // print('no scrolling');
   }
 
   ListView scoreListUI(List<Answer> answers) {
@@ -27,10 +29,16 @@ class ScoreList with ChangeNotifier {
     );
   }
 
+  // Widget listController(List<Answer> answers) {
+  //   ListView listView = scoreListUI(answers);
+  //   _scrollToBottom();
+  //   return listView;
+  // }
+
   void refreshList() {
-    _scrollToBottom();
-    notifyListeners();
+    scrollToBottom();
     _listNotEmpty = true;
+    notifyListeners();
   }
 
   void restartList() {
