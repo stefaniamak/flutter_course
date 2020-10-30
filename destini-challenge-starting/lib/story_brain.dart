@@ -56,7 +56,7 @@ class StoryBrain {
 
   //Step 17 - Create a method called nextStory(), it should not have any outputs but it should have 1 input called choiceNumber which will be the choice number (int) made by the user.
   void nextStory(int userChoice) {
-    //TODO: Step 21 - Using the story plan, update nextStory() to change the storyNumber depending on the choice made by the user. e.g. if choiceNumber was equal to 1 and the storyNumber is 0, the storyNumber should become 2.
+    //Step 21 - Using the story plan, update nextStory() to change the storyNumber depending on the choice made by the user. e.g. if choiceNumber was equal to 1 and the storyNumber is 0, the storyNumber should become 2.
     if (_storyNumber == 0) {
       _storyNumber = (userChoice == 1) ? 2 : 1;
     } else if (_storyNumber == 1) {
