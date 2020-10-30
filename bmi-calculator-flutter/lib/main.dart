@@ -31,8 +31,11 @@ class _InputPageState extends State<InputPage> {
       body: Center(
         child: Text('Body Text'),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+      floatingActionButton: Theme(
+        data: ThemeData(accentColor: Color(0xFFEB1555)),
+        child: FloatingActionButton(
+          child: Icon(Icons.add),
+        ),
       ),
     );
   }
