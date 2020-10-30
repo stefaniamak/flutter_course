@@ -5,6 +5,7 @@ import 'reusable_card.dart';
 
 const bottomContainerHeight = 80.0;
 const activeCardColor = Color(0xFF1D1E33);
+const inactiveCardColor = Color(0xFF111328);
 const bottomContainerColor = Color(0xFFEB1555);
 
 class InputPage extends StatefulWidget {
@@ -13,6 +14,20 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleColor = inactiveCardColor;
+  Color femaleColor = inactiveCardColor;
+
+  // male = 1, female = 2
+  // void updateColor(int gender) {
+  //   gender == 1
+  //       ? (maleColor == inactiveCardColor
+  //           ? maleColor = activeCardColor
+  //           : maleColor = inactiveCardColor)
+  //       : (femaleColor == inactiveCardColor
+  //           ? femaleColor = activeCardColor
+  //           : femaleColor = inactiveCardColor);
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +40,17 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ReusableCard(
-                    colour: activeCardColor,
-                    childWidget: CardContent(
-                        icon: FontAwesomeIcons.mars, labelText: 'MALE'),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        //updateColor();
+                      });
+                    },
+                    child: ReusableCard(
+                      colour: activeCardColor,
+                      childWidget: CardContent(
+                          icon: FontAwesomeIcons.mars, labelText: 'MALE'),
+                    ),
                   ),
                 ),
                 Expanded(
