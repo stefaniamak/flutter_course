@@ -6,7 +6,7 @@ class StoryBrain {
 //Step 7 - Uncomment the lines below to include storyData as a private property in StoryBrain. Hint: You might need to change something in story.dart to make this work.
 
   //Step 16 - Create a property called storyNumber which starts with a value of 0. This will be used to track which story the user is currently viewing.
-  int storyNumber = 0;
+  int _storyNumber = 0;
 
   List<Story> _storyData = [
     Story(
@@ -56,14 +56,13 @@ class StoryBrain {
 
   //Step 17 - Create a method called nextStory(), it should not have any outputs but it should have 1 input called choiceNumber which will be the choice number (int) made by the user.
   void nextStory(int userChoice) {
-    bool test = true;
     //TODO: Step 21 - Using the story plan, update nextStory() to change the storyNumber depending on the choice made by the user. e.g. if choiceNumber was equal to 1 and the storyNumber is 0, the storyNumber should become 2.
-    if (storyNumber == 0) {
-      userChoice == 1 ? storyNumber = 2 : storyNumber = 1;
-    } else if (storyNumber == 1) {
-      userChoice == 1 ? storyNumber = 2 : storyNumber = 3;
-    } else if (storyNumber == 2) {
-      userChoice == 1 ? storyNumber = 5 : storyNumber = 4;
+    if (_storyNumber == 0) {
+      _storyNumber = (userChoice == 1) ? 2 : 1;
+    } else if (_storyNumber == 1) {
+      _storyNumber = (userChoice == 1) ? 2 : 3;
+    } else if (_storyNumber == 2) {
+      _storyNumber = (userChoice == 1) ? 5 : 4;
     } else {}
   }
 }
