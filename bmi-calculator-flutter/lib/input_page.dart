@@ -27,9 +27,7 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-            child: Expanded(
-              child: ReusableCard(colour: Color(0xFF1D1E33)),
-            ),
+            child: ReusableCard(colour: Color(0xFF1D1E33)),
           ),
           Expanded(
             child: Row(
