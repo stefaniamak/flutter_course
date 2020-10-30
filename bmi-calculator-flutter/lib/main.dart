@@ -6,6 +6,11 @@ class BMICalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        primaryColor: Color(0xFF111428),
+        accentColor: Color(0xFFEB1555),
+        canvasColor: Color(0xFF0A0B22),
+      ),
       home: InputPage(),
     );
   }
