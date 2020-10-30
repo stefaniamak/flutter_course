@@ -35,7 +35,7 @@ class _InputPageState extends State<InputPage> {
                   child: ReusableCard(
                     colour: activeCardColor,
                     childWidget: CardContent(
-                        icon: FontAwesomeIcons.mars, labelText: 'MALE'),
+                        icon: FontAwesomeIcons.venus, labelText: 'FEMALE'),
                   ),
                 ),
               ],
