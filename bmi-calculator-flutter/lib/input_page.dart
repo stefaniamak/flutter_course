@@ -20,13 +20,30 @@ class _InputPageState extends State<InputPage> {
   // male = 1, female = 2
   void updateColor(int gender) {
     if (gender == 1) {
-      maleColor = activeCardColor;
-      femaleColor = inactiveCardColor;
+      if (maleColor == activeCardColor) {
+        maleColor = inactiveCardColor;
+      } else {
+        maleColor = activeCardColor;
+        femaleColor = inactiveCardColor;
+      }
     } else {
-      femaleColor = activeCardColor;
-      maleColor = inactiveCardColor;
+      if (femaleColor == activeCardColor) {
+        femaleColor = inactiveCardColor;
+      } else {
+        femaleColor = activeCardColor;
+        maleColor = inactiveCardColor;
+      }
     }
   }
+
+  // void imageSwitch(Color buttonColorOne, Color buttonColorTwo){
+  //   if (buttonColorOne == activeCardColor) {
+  //     buttonColorOne = inactiveCardColor;
+  //   } else {
+  //     buttonColorOne = activeCardColor;
+  //     buttonColorTwo = inactiveCardColor;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
