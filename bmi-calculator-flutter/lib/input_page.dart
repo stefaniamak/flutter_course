@@ -47,7 +47,7 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     child: ReusableCard(
-                      colour: activeCardColor,
+                      colour: maleColor,
                       childWidget: CardContent(
                           icon: FontAwesomeIcons.mars, labelText: 'MALE'),
                     ),
@@ -61,7 +61,7 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     child: ReusableCard(
-                      colour: activeCardColor,
+                      colour: femaleColor,
                       childWidget: CardContent(
                           icon: FontAwesomeIcons.venus, labelText: 'FEMALE'),
                     ),
