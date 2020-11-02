@@ -18,7 +18,7 @@ class CardContent extends StatelessWidget {
             SizedBox(height: 15.0),
             Text(
               labelText,
-              style: labelStyle,
+              style: kLabelStyle,
             ),
           ],
         ),
