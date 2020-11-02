@@ -82,6 +82,7 @@ class _InputPageState extends State<InputPage> {
                   ),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
+                        inactiveTrackColor: kInactiveBar,
                         activeTrackColor: Colors.white,
                         thumbColor: kBottomContainerColor,
                         overlayColor: Color(0x298D8E98),
@@ -93,7 +94,6 @@ class _InputPageState extends State<InputPage> {
                       value: height.toDouble(),
                       min: 100.0,
                       max: 250.0,
-                      inactiveColor: kInactiveBar,
                       onChanged: (double newValue) {
                         setState(() {
                           height = newValue.round();
