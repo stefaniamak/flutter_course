@@ -63,9 +63,10 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        selectedGender == Gender.male
-                            ? selectedGender = null
-                            : selectedGender = Gender.male;
+                        selectedGender = Gender.male;
+                        // selectedGender == Gender.male
+                        //     ? selectedGender = null
+                        //     : selectedGender = Gender.male;
                         //updateColor(Gender.male);
                       });
                     },
@@ -82,9 +83,10 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        selectedGender == Gender.female
-                            ? selectedGender = null
-                            : selectedGender = Gender.female;
+                        selectedGender = Gender.female;
+                        // selectedGender == Gender.female
+                        //     ? selectedGender = null
+                        //     : selectedGender = Gender.female;
                         //updateColor(Gender.female);
                       });
                     },
