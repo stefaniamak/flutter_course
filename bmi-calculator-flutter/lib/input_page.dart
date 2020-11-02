@@ -85,7 +85,7 @@ class _InputPageState extends State<InputPage> {
                         inactiveTrackColor: kInactiveBar,
                         activeTrackColor: Colors.white,
                         thumbColor: kBottomContainerColor,
-                        overlayColor: Color(0x298D8E98),
+                        overlayColor: Color(0x29EB1555),
                         thumbShape:
                             RoundSliderThumbShape(enabledThumbRadius: 15.0),
                         overlayShape:
