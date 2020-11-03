@@ -1,2 +1,13 @@
-# flutter_course
-This repo hosts different apps that were created during the flutter course.
+# Flutter Course
+This repo hosts different apps that were created during the flutter course [The Complete 2020 Flutter Development Bootcamp with Dart](https://www.udemy.com/course/flutter-bootcamp-with-dart/)
+
+## Apps made alongside the course:
+
+| [I am Rich](https://github.com/stefaniamak/flutter_course/tree/master/i_am_rich)  | [I am poor](https://github.com/stefaniamak/flutter_course/tree/master/i_am_poor) | [Mi card flutter](https://github.com/stefaniamak/flutter_course/tree/master/mi_card_flutter) | [Rolling Dice](https://github.com/stefaniamak/flutter_course/tree/master/dicee-flutter) | [Magic 8Ball](https://github.com/stefaniamak/flutter_course/tree/master/magic-8-ball-flutter) | [Xylophone](https://github.com/stefaniamak/flutter_course/tree/master/xylophone-flutter) | [Destini](https://github.com/stefaniamak/flutter_course/tree/master/destini-challenge-starting) |
+| ------------- | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
+| ![Screenshot_1603273888](https://user-images.githubusercontent.com/48293545/98004056-241e6a00-1df8-11eb-85ce-d6af99734fa2.png)  | ![Screenshot_1604417444](https://user-images.githubusercontent.com/48293545/98005960-529d4480-1dfa-11eb-96b1-96484b83ee5a.png)  | ![Screenshot_1603355384](https://user-images.githubusercontent.com/48293545/98004076-2a144b00-1df8-11eb-96df-4a8f09f98652.png) | ![Screenshot_1603365342](https://user-images.githubusercontent.com/48293545/98004081-2b457800-1df8-11eb-954d-e987ed4a958e.png) | ![Screenshot_1603368276](https://user-images.githubusercontent.com/48293545/98004083-2bde0e80-1df8-11eb-9b7a-edf45cef1197.png) | ![Screenshot_1603375830](https://user-images.githubusercontent.com/48293545/98004088-2d0f3b80-1df8-11eb-9b22-91543f873e80.png) | ![Screenshot_1604058258](https://user-images.githubusercontent.com/48293545/98004098-2e406880-1df8-11eb-98f4-b08257090271.png) |
+
+| [Quizler](https://github.com/stefaniamak/flutter_course/tree/master/quizzler-flutter)  | [BMI Calculator](https://github.com/stefaniamak/flutter_course/tree/master/bmi-calculator-flutter) | ____________ | ____________ | ____________ | ____________ | ____________ |
+| ------------- | ------------- | ------------- |  ------------- |  ------------- |  ------------- |  ------------- | 
+|  ![Screenshot_1604058647](https://user-images.githubusercontent.com/48293545/98004116-35677680-1df8-11eb-8642-2e3418328324.png) | ![Screenshot_1604416424](https://user-images.githubusercontent.com/48293545/98004143-3ac4c100-1df8-11eb-9e4d-2041fd43d247.png)  |
+| ![Screenshot_1604058660](https://user-images.githubusercontent.com/48293545/98004129-38626700-1df8-11eb-88ff-30db0056563e.png) | ![Screenshot_1604416417](https://user-images.githubusercontent.com/48293545/98004136-3a2c2a80-1df8-11eb-9c9e-da4ef59354d1.png) |  |  |  |  |  |
