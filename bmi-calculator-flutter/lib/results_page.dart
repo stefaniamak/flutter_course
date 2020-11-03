@@ -5,6 +5,13 @@ import 'package:flutter/material.dart';
 import 'bottom_button.dart';
 
 class ResultsPage extends StatelessWidget {
+  final String result;
+  final String bmi;
+  final String description;
+
+  const ResultsPage(
+      {@required this.bmi, @required this.result, @required this.description});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,16 +40,17 @@ class ResultsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    'simple textaaaaa',
+                    result,
                     style: kGreenLabel,
                   ),
                   Text(
-                    '56.2',
+                    bmi,
                     style: kResultNumber,
                   ),
                   Text(
-                    'simple text',
+                    description,
                     style: TextStyle(fontSize: 15.0),
+                    textAlign: TextAlign.center,
                   ),
                 ],
               ),

@@ -17,7 +17,7 @@ class BMICalculator extends StatelessWidget {
       initialRoute: '/input',
       routes: {
         '/input': (context) => InputPage(),
-        '/result': (context) => ResultsPage(),
+        //'/result': (context) => ResultsPage(result: '',bmi: '',description: '',), // ToDo: see how can i add the parameters here
       },
     );
   }
