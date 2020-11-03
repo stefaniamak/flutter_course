@@ -2,6 +2,8 @@ import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/reusable_card.dart';
 import 'package:flutter/material.dart';
 
+import 'bottom_button.dart';
+
 class ResultsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,9 @@ class ResultsPage extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(child: Text('Your Results')),
+          Expanded(
+            child: Text('Your Results'),
+          ),
           Expanded(
             flex: 5,
             child: ReusableCard(
@@ -37,6 +41,12 @@ class ResultsPage extends StatelessWidget {
               ),
             ),
           ),
+          Expanded(
+            child: BottomButton(
+              label: 'RE-CALCULATE',
+              nextPage: '/input',
+            ),
+          )
         ],
       ),
     );

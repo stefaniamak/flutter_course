@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'bottom_button.dart';
 import 'card_content.dart';
 import 'reusable_card.dart';
 import 'constants.dart';
@@ -126,34 +127,11 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          BottomButton(),
-        ],
-      ),
-    );
-  }
-}
-
-class BottomButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, '/result');
-      },
-      child: Container(
-        child: Center(
-          child: Padding(
-            padding: EdgeInsets.only(bottom: 20.0),
-            child: Text(
-              'CALCULATE',
-              style: kLargeButtonTextStyle,
-            ),
+          BottomButton(
+            label: 'CALCULATE',
+            nextPage: '/result',
           ),
-        ),
-        height: kBottomContainerHeight,
-        color: kBottomContainerColor,
-        margin: EdgeInsets.only(top: 10.0),
-        width: double.infinity,
+        ],
       ),
     );
   }
