@@ -126,17 +126,26 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            height: kBottomContainerHeight,
-            color: kBottomContainerColor,
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            child: FlatButton(
-              onPressed: () {
-                setState(() {
-                  Navigator.pushNamed(context, '/result');
-                });
-              },
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                Navigator.pushNamed(context, '/result');
+              });
+            },
+            child: Container(
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.only(bottom: 20.0),
+                  child: Text(
+                    'CALCULATE',
+                    style: kLargeButtonTextStyle,
+                  ),
+                ),
+              ),
+              height: kBottomContainerHeight,
+              color: kBottomContainerColor,
+              margin: EdgeInsets.only(top: 10.0),
+              width: double.infinity,
             ),
           )
         ],
