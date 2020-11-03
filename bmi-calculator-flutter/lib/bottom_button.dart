@@ -3,16 +3,14 @@ import 'constants.dart';
 
 class BottomButton extends StatelessWidget {
   String label;
-  String nextPage;
+  Function onTap;
 
-  BottomButton({this.label, @required this.nextPage});
+  BottomButton({this.label, @required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, nextPage);
-      },
+      onTap: onTap,
       child: Container(
         child: Center(
           child: Padding(

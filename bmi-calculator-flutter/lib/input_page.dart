@@ -129,7 +129,9 @@ class _InputPageState extends State<InputPage> {
           ),
           BottomButton(
             label: 'CALCULATE',
-            nextPage: '/result',
+            onTap: () {
+              Navigator.pushNamed(context, '/result');
+            },
           ),
         ],
       ),
