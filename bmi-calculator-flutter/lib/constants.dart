@@ -31,3 +31,8 @@ const kResultNumber = TextStyle(
   fontSize: 100.0,
   fontWeight: FontWeight.bold,
 );
+
+const kResultTitle = TextStyle(
+  fontSize: 60.0,
+  fontWeight: FontWeight.bold,
+);
