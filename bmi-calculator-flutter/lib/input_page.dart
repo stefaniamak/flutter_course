@@ -131,6 +131,13 @@ class _InputPageState extends State<InputPage> {
             color: kBottomContainerColor,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
+            child: FlatButton(
+              onPressed: () {
+                setState(() {
+                  Navigator.pushNamed(context, '/result');
+                });
+              },
+            ),
           )
         ],
       ),
