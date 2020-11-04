@@ -8,19 +8,23 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
   // Lifecycle
-  // @override
-  // void initState() {
-  //   super.initState();
-  //
-  //   Location();
-  // }
+  @override
+  void initState() {
+    super.initState();
+
+    getLocation();
+  }
+
+  void getLocation() async {
+    Location location = Location();
+    await location.getCurrentLocation();
+
+    print(location.longitude);
+    print(location.latitude);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark(),
-      // home: Location(),
-      home: Location(),
-    );
+    return Scaffold();
   }
 }

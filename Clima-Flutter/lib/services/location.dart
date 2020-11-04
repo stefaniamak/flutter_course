@@ -1,36 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 
-class Location extends StatefulWidget {
-  @override
-  _LocationState createState() => _LocationState();
-}
+class Location {
+  double latitude;
+  double longitude;
 
-class _LocationState extends State<Location> {
-  @override
-  void initState() {
-    super.initState();
-
-    getCurrentLocation();
-  }
-
-  var letitude;
-  var longitude;
-
-  void _getLocation() async {}
-
-  void getCurrentLocation() async {
+  Future<void> getCurrentLocation() async {
     try {
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.low);
-      print(position);
+
+      latitude = position.latitude;
+      longitude = position.longitude;
     } catch (e) {
       print(e);
     }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
