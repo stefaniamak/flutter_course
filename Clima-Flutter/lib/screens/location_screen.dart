@@ -15,6 +15,8 @@ class _LocationScreenState extends State<LocationScreen> {
   int temperature;
   String description;
   String cityName;
+  String suggestion;
+  String descriptionDown;
 
   @override
   void initState() {
@@ -29,12 +31,15 @@ class _LocationScreenState extends State<LocationScreen> {
         temperature = 0;
         description = 'Unable to get weather data.';
         cityName = '';
+        descriptionDown = '';
         return;
       }
       double temp = weatherData['main']['temp'];
       temperature = temp.toInt();
       description = weatherData['weather'][0]['description'];
       cityName = weatherData['name'];
+      suggestion = WeatherModel().getMessage(temperature);
+      descriptionDown = "$suggestion in $cityName!";
 
       print(description);
       print(cityName);
@@ -109,7 +114,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "${WeatherModel().getMessage(temperature)} in $cityName!",
+                  descriptionDown,
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),
