@@ -17,7 +17,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-
     getLocationData();
   }
 
@@ -30,7 +29,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
     NetworkHelper networkHelper = NetworkHelper(
         'http://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey');
-    String weatherData = await networkHelper.getData();
+    var weatherData = await networkHelper.getData();
 
     // var weatherDescription = weatherData['weather'][0]['description'];
     // var cityName = weatherData['name'];
