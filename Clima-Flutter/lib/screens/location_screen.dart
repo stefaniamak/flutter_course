@@ -11,7 +11,7 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  double temperature;
+  int temperature;
   String description;
   String cityName;
 
@@ -23,7 +23,8 @@ class _LocationScreenState extends State<LocationScreen> {
   }
 
   void updateUI(dynamic weatherData) {
-    temperature = weatherData['main']['temp'];
+    double temp = weatherData['main']['temp'];
+    temperature = temp.toInt();
     description = weatherData['weather'][0]['description'];
     cityName = weatherData['name'];
 
