@@ -11,11 +11,26 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+  String celsius;
+  String description;
+  String cityName;
+  var weatherData;
+
   @override
   void initState() {
     super.initState();
 
+    weatherData = widget.locationWeather;
     print(widget.locationWeather);
+    updateUI();
+  }
+
+  void updateUI() {
+    description = weatherData['weather'][0]['description'];
+    cityName = weatherData['name'];
+
+    print(description);
+    print(cityName);
   }
 
   @override
@@ -73,7 +88,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Padding(
                 padding: EdgeInsets.only(right: 15.0),
                 child: Text(
-                  "It's 🍦 time in San Francisco!",
+                  "It's $description in $cityName!",
                   textAlign: TextAlign.right,
                   style: kMessageTextStyle,
                 ),

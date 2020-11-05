@@ -41,12 +41,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
         },
       ),
     );
-
-    // var weatherDescription = weatherData['weather'][0]['description'];
-    // var cityName = weatherData['name'];
-    //
-    // print(weatherDescription);
-    // print(cityName);
   }
 
   @override
