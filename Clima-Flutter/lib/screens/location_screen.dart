@@ -18,6 +18,7 @@ class _LocationScreenState extends State<LocationScreen> {
   String cityName;
   String suggestion;
   String descriptionDown;
+  WeatherModel weather = WeatherModel();
 
   @override
   void initState() {
@@ -35,11 +36,11 @@ class _LocationScreenState extends State<LocationScreen> {
         descriptionDown = '';
         return;
       }
-      double temp = weatherData['main']['temp'];
+      var temp = weatherData['main']['temp'];
       temperature = temp.toInt();
       description = weatherData['weather'][0]['description'];
       cityName = weatherData['name'];
-      suggestion = WeatherModel().getMessage(temperature);
+      suggestion = weather.getMessage(temperature);
       descriptionDown = "$suggestion in $cityName!";
 
       print(description);
@@ -70,8 +71,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 children: <Widget>[
                   FlatButton(
                     onPressed: () async {
-                      var weatherData =
-                          await WeatherModel().getLocationWeather();
+                      var weatherData = await weather.getLocationWeather();
                       updateUI(weatherData);
                     },
                     child: Icon(
@@ -89,7 +89,12 @@ class _LocationScreenState extends State<LocationScreen> {
                           },
                         ),
                       );
-                      print(typedName);
+                      if (typedName != null) {
+                        var weatherData =
+                            await weather.getCityWeather(typedName);
+                        updateUI(weatherData);
+                        print(typedName);
+                      }
                     },
                     child: Icon(
                       Icons.location_city,
@@ -110,7 +115,7 @@ class _LocationScreenState extends State<LocationScreen> {
                           style: kTempTextStyle,
                         ),
                         Text(
-                          WeatherModel().getWeatherIcon(temperature),
+                          weather.getWeatherIcon(temperature),
                           style: kConditionTextStyle,
                         ),
                       ],
