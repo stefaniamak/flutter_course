@@ -23,3 +23,22 @@ const kDescriptionTextStyle = TextStyle(
   fontSize: 30.0,
   fontFamily: 'Spartan MB',
 );
+
+const kTextFieldDecoration = InputDecoration(
+  fillColor: Colors.white,
+  filled: true,
+  icon: Icon(
+    Icons.location_city,
+    color: Colors.white,
+  ),
+  hintText: 'Enter City Name',
+  hintStyle: TextStyle(
+    color: Colors.grey,
+  ),
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(10.0),
+    ),
+    borderSide: BorderSide.none,
+  ),
+);
