@@ -14,18 +14,15 @@ class _LocationScreenState extends State<LocationScreen> {
   String celsius;
   String description;
   String cityName;
-  var weatherData;
 
   @override
   void initState() {
     super.initState();
 
-    weatherData = widget.locationWeather;
-    print(widget.locationWeather);
-    updateUI();
+    updateUI(widget.locationWeather);
   }
 
-  void updateUI() {
+  void updateUI(dynamic weatherData) {
     description = weatherData['weather'][0]['description'];
     cityName = weatherData['name'];
 
