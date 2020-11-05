@@ -2,11 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:clima/utilities/constants.dart';
 
 class LocationScreen extends StatefulWidget {
+  final locationWeather;
+
+  LocationScreen(this.locationWeather);
+
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    print(widget.locationWeather);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
