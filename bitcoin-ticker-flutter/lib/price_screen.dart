@@ -46,46 +46,45 @@ class _PriceScreenState extends State<PriceScreen> {
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
-            child: CupertinoPicker(
-              itemExtent: 32.0,
-              onSelectedItemChanged: (selectedIntext) {
-                print(selectedIntext);
-              },
-              children: getSimpleItems(),
-            ),
+            child: getCupertinoPicker(),
           ),
         ],
       ),
     );
   }
-}
 
-List<Text> getSimpleItems() {
-  List<Text> myItems = [];
-  for (String currency in currenciesList) {
-    myItems.add(Text(currency));
-  }
-  return myItems;
-}
-
-List<DropdownMenuItem> getItems() {
-  List<DropdownMenuItem<String>> itemList = [];
-  for (String currency in currenciesList) {
-    var newItem = DropdownMenuItem(
-      child: Text(currency),
-      value: currency,
+  DropdownButton<String> getDropdownButton() {
+    List<DropdownMenuItem<String>> itemList = [];
+    for (String currency in currenciesList) {
+      var newItem = DropdownMenuItem(
+        child: Text(currency),
+        value: currency,
+      );
+      itemList.add(newItem);
+    }
+    return DropdownButton<String>(
+      value: selectedCurrency,
+      items: itemList,
+      onChanged: (value) {
+        setState(() {
+          selectedCurrency = value;
+        });
+      },
     );
-    itemList.add(newItem);
   }
-  return itemList;
-}
 
-// DropdownButton<String>(
-// value: selectedCurrency,
-// onChanged: (value) {
-// setState(() {
-// selectedCurrency = value;
-// });
-// },
-// items: getItems(),
-// ),
+  CupertinoPicker getCupertinoPicker() {
+    List<Text> myItems = [];
+    for (String currency in currenciesList) {
+      myItems.add(Text(currency));
+    }
+
+    return CupertinoPicker(
+      itemExtent: 32.0,
+      onSelectedItemChanged: (selectedIntext) {
+        print(selectedIntext);
+      },
+      children: myItems,
+    );
+  }
+}
