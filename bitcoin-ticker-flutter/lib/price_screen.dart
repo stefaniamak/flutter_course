@@ -11,6 +11,8 @@ class PriceScreen extends StatefulWidget {
 class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = currenciesList.first;
 
+  void getRate() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +71,7 @@ class _PriceScreenState extends State<PriceScreen> {
       onChanged: (value) {
         setState(() {
           selectedCurrency = value;
+          CoinData();
         });
       },
     );
@@ -84,6 +87,7 @@ class _PriceScreenState extends State<PriceScreen> {
       itemExtent: 32.0,
       onSelectedItemChanged: (selectedIntext) {
         print(selectedIntext);
+        CoinData().getData();
       },
       children: myItems,
     );
