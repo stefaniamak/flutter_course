@@ -38,7 +38,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = $rate USD',
+                  '1 BTC = $rate $selectedCurrency',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
@@ -90,6 +90,12 @@ class _PriceScreenState extends State<PriceScreen> {
       itemExtent: 32.0,
       onSelectedItemChanged: (selectedIntext) {
         print(selectedIntext);
+        setState(() {
+          selectedCurrency = currenciesList[selectedIntext];
+        });
+        print(
+            'This is the thing i look for: ' + currenciesList[selectedIntext]);
+        // selectedCurrency = currenciesList[int.parse(selectedCurrency)];
         getCoinData();
       },
       children: myItems,
@@ -98,8 +104,10 @@ class _PriceScreenState extends State<PriceScreen> {
 
   Future<void> getCoinData() async {
     dynamic coinData =
-        await CoinData(url: '$_link/BTC/USD?apikey=$_apiKey').getData();
+        await CoinData(url: '$_link/BTC/$selectedCurrency?apikey=$_apiKey')
+            .getData();
     setState(() {
+      print('next');
       print(coinData['asset_id_quote']);
       print(coinData['rate']);
       int temp = coinData['rate'].round();
