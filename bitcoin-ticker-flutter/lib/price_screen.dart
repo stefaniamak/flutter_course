@@ -46,14 +46,14 @@ class _PriceScreenState extends State<PriceScreen> {
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: Colors.lightBlue,
-            child: getCupertinoPicker(),
+            child: getIOSPicker(),
           ),
         ],
       ),
     );
   }
 
-  DropdownButton<String> getDropdownButton() {
+  DropdownButton<String> getAndroidPicker() {
     List<DropdownMenuItem<String>> itemList = [];
     for (String currency in currenciesList) {
       var newItem = DropdownMenuItem(
@@ -73,7 +73,7 @@ class _PriceScreenState extends State<PriceScreen> {
     );
   }
 
-  CupertinoPicker getCupertinoPicker() {
+  CupertinoPicker getIOSPicker() {
     List<Text> myItems = [];
     for (String currency in currenciesList) {
       myItems.add(Text(currency));
