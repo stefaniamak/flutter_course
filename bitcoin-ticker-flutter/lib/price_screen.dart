@@ -63,10 +63,7 @@ class _PriceScreenState extends State<PriceScreen> {
 List<Text> getSimpleItems() {
   List<Text> myItems = [];
   for (String currency in currenciesList) {
-    var newItem = Text(
-      currency,
-    );
-    myItems.add(newItem);
+    myItems.add(Text(currency));
   }
   return myItems;
 }
