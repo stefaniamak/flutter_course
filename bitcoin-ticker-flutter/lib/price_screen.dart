@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'coin_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:io' show Platform;
+import 'keys.dart';
 
 class PriceScreen extends StatefulWidget {
   @override
@@ -10,6 +11,9 @@ class PriceScreen extends StatefulWidget {
 
 class _PriceScreenState extends State<PriceScreen> {
   String selectedCurrency = currenciesList.first;
+  String _apiKey = Keys.coinapiKey; //todo: add key if class Keys doesn't exist
+  String _link = 'http://rest.coinapi.io/v1/exchangerate';
+  String rate = '?';
 
   void getRate() {}
 
@@ -34,7 +38,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = ? USD',
+                  '1 BTC = $rate USD',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
@@ -71,7 +75,6 @@ class _PriceScreenState extends State<PriceScreen> {
       onChanged: (value) {
         setState(() {
           selectedCurrency = value;
-          CoinData();
         });
       },
     );
@@ -87,9 +90,20 @@ class _PriceScreenState extends State<PriceScreen> {
       itemExtent: 32.0,
       onSelectedItemChanged: (selectedIntext) {
         print(selectedIntext);
-        CoinData().getData();
+        getCoinData();
       },
       children: myItems,
     );
+  }
+
+  Future<void> getCoinData() async {
+    dynamic coinData =
+        await CoinData(url: '$_link/BTC/USD?apikey=$_apiKey').getData();
+    setState(() {
+      print(coinData['asset_id_quote']);
+      print(coinData['rate']);
+      int temp = coinData['rate'].round();
+      rate = temp.toString();
+    });
   }
 }
