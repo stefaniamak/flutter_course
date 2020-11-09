@@ -80,14 +80,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               height: 48.0,
             ),
             RoundedButton(
-              animationRegisterButton: animationLoginButton,
+              animationButton: animationLoginButton,
               onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
               },
               label: 'Log In',
             ),
             RoundedButton(
-              animationRegisterButton: animationRegisterButton,
+              animationButton: animationRegisterButton,
               onPressed: () {
                 Navigator.pushNamed(context, RegistrationScreen.id);
               },

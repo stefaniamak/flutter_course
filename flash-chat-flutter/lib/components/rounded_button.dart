@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton(
-      {@required this.animationRegisterButton, this.onPressed, this.label});
+      {@required this.animationButton, this.onPressed, this.label});
 
-  final Animation animationRegisterButton;
+  final Animation animationButton;
   final Function onPressed;
   final String label;
 
@@ -13,7 +13,7 @@ class RoundedButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
-        color: animationRegisterButton.value,
+        color: animationButton.value,
         borderRadius: BorderRadius.circular(30.0),
         elevation: 5.0,
         child: MaterialButton(
