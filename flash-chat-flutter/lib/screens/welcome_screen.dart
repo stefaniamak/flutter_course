@@ -13,7 +13,8 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
   AnimationController animationController;
-  Animation animation;
+  Animation animationLoginButton;
+  Animation animationRegisterButton;
 
   @override
   void initState() {
@@ -21,10 +22,21 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
     animationController =
         AnimationController(duration: Duration(seconds: 1), vsync: this);
+
+    animationLoginButton =
+        ColorTween(begin: Colors.white, end: Colors.lightBlueAccent)
+            .animate(animationController);
+
+    animationRegisterButton =
+        ColorTween(begin: Colors.white, end: Colors.blueAccent)
+            .animate(animationController);
+
     animationController.forward();
+
     animationController.addListener(() {
       setState(() {});
-      print(animationController.value);
+      print(animationLoginButton.value);
+      //print(animationController.value);
     });
   }
 
@@ -70,7 +82,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
                 elevation: 5.0,
-                color: Colors.lightBlueAccent,
+                color: animationLoginButton.value,
                 borderRadius: BorderRadius.circular(30.0),
                 child: MaterialButton(
                   onPressed: () {
@@ -87,7 +99,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             Padding(
               padding: EdgeInsets.symmetric(vertical: 16.0),
               child: Material(
-                color: Colors.blueAccent,
+                color: animationRegisterButton.value,
                 borderRadius: BorderRadius.circular(30.0),
                 elevation: 5.0,
                 child: MaterialButton(
