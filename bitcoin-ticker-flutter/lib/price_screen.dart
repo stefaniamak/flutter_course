@@ -85,6 +85,9 @@ class _PriceScreenState extends State<PriceScreen> {
       onChanged: (value) {
         setState(() {
           selectedCurrency = value;
+          for (String currency in cryptoList) {
+            getCoinData(currency);
+          }
         });
       },
     );
