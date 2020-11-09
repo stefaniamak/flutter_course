@@ -35,8 +35,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
 
     animationController.addListener(() {
       setState(() {});
-      print(animationLoginButton.value);
-      //print(animationController.value);
     });
   }
 
@@ -78,43 +76,50 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: animationLoginButton.value,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
+            RoundedButton(
+              animationRegisterButton: animationLoginButton,
+              onPressed: () {
+                Navigator.pushNamed(context, LoginScreen.id);
+              },
+              label: 'Log In',
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: animationRegisterButton.value,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, RegistrationScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                  ),
-                ),
-              ),
+            RoundedButton(
+              animationRegisterButton: animationRegisterButton,
+              onPressed: () {
+                Navigator.pushNamed(context, RegistrationScreen.id);
+              },
+              label: 'Register',
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class RoundedButton extends StatelessWidget {
+  const RoundedButton(
+      {@required this.animationRegisterButton, this.onPressed, this.label});
+
+  final Animation animationRegisterButton;
+  final Function onPressed;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 16.0),
+      child: Material(
+        color: animationRegisterButton.value,
+        borderRadius: BorderRadius.circular(30.0),
+        elevation: 5.0,
+        child: MaterialButton(
+          onPressed: onPressed,
+          minWidth: 200.0,
+          height: 42.0,
+          child: Text(
+            label,
+          ),
         ),
       ),
     );
