@@ -18,34 +18,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   Animation animationRegisterButton;
 
   @override
-  void initState() {
-    super.initState();
-
-    animationController =
-        AnimationController(duration: Duration(seconds: 1), vsync: this);
-
-    animationLoginButton =
-        ColorTween(begin: Colors.white, end: Colors.lightBlueAccent)
-            .animate(animationController);
-
-    animationRegisterButton =
-        ColorTween(begin: Colors.white, end: Colors.blueAccent)
-            .animate(animationController);
-
-    animationController.forward();
-
-    animationController.addListener(() {
-      setState(() {});
-    });
-  }
-
-  @override
-  void dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -80,14 +52,14 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               height: 48.0,
             ),
             RoundedButton(
-              animationButton: animationLoginButton,
+              color: Colors.lightBlueAccent,
               onPressed: () {
                 Navigator.pushNamed(context, LoginScreen.id);
               },
               label: 'Log In',
             ),
             RoundedButton(
-              animationButton: animationRegisterButton,
+              color: Colors.blueAccent,
               onPressed: () {
                 Navigator.pushNamed(context, RegistrationScreen.id);
               },

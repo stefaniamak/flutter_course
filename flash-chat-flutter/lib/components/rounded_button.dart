@@ -1,12 +1,44 @@
 import 'package:flutter/material.dart';
 
-class RoundedButton extends StatelessWidget {
+class RoundedButton extends StatefulWidget {
   const RoundedButton(
-      {@required this.animationButton, this.onPressed, this.label});
+      {this.color, this.onPressed, this.label}); //BuildContext buildContext,
 
-  final Animation animationButton;
+  final Color color;
   final Function onPressed;
   final String label;
+
+  @override
+  _RoundedButtonState createState() => _RoundedButtonState();
+}
+
+class _RoundedButtonState extends State<RoundedButton>
+    with SingleTickerProviderStateMixin {
+  AnimationController animationController;
+  Animation animationButton;
+
+  @override
+  void initState() {
+    super.initState();
+
+    animationController =
+        AnimationController(duration: Duration(seconds: 1), vsync: this);
+
+    animationButton = ColorTween(begin: Colors.white, end: widget.color)
+        .animate(animationController);
+
+    animationController.forward();
+
+    animationController.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +50,11 @@ class RoundedButton extends StatelessWidget {
         elevation: 5.0,
         child: MaterialButton(
           textColor: Colors.white,
-          onPressed: onPressed,
+          onPressed: widget.onPressed,
           minWidth: 200.0,
           height: 42.0,
           child: Text(
-            label,
+            widget.label,
           ),
         ),
       ),
