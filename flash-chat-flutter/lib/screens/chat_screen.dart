@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flash_chat/components/message.dart';
 
 class ChatScreen extends StatefulWidget {
   static const String id = 'chat_screen';
@@ -9,6 +10,11 @@ class ChatScreen extends StatefulWidget {
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
+
+const List<Message> testMessagesList = [
+  Message(user: 'first', message: 'first message'),
+  Message(user: 'second', message: 'second message'),
+];
 
 class _ChatScreenState extends State<ChatScreen> {
   final _firestore = FirebaseFirestore.instance;
@@ -35,6 +41,11 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
+  void getMessages() async {
+    final messages = await _firestore.collection('messages').get();
+    print(messages);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +67,13 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            Expanded(
+              flex: 5,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: testMessagesList,
+              ),
+            ),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
