@@ -18,13 +18,32 @@ void main() => runApp(FlashChat());
 class FlashChat extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: WelcomeScreen.id,
-      routes: {
-        WelcomeScreen.id: (context) => WelcomeScreen(),
-        LoginScreen.id: (context) => LoginScreen(),
-        RegistrationScreen.id: (context) => RegistrationScreen(),
-        ChatScreen.id: (context) => ChatScreen(),
+    return FutureBuilder(
+      // Initialize FlutterFire
+      future: Firebase.initializeApp(),
+      builder: (context, snapshot) {
+        return MaterialApp(
+          initialRoute: WelcomeScreen.id,
+          routes: {
+            WelcomeScreen.id: (context) => WelcomeScreen(),
+            LoginScreen.id: (context) => LoginScreen(),
+            RegistrationScreen.id: (context) => RegistrationScreen(),
+            ChatScreen.id: (context) => ChatScreen(),
+          },
+        );
+
+        // // Check for errors
+        // if (snapshot.hasError) {
+        // return SomethingWentWrong();
+        // }
+        //
+        // // Once complete, show your application
+        // if (snapshot.connectionState == ConnectionState.done) {
+        // return MyAwesomeApp();
+        // }
+        //
+        // // Otherwise, show something whilst waiting for initialization to complete
+        // return Loading();
       },
     );
   }
