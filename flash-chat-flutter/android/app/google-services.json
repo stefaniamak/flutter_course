@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "964868862280",
+    "firebase_url": "https://flash-chat---course-e02b1.firebaseio.com",
+    "project_id": "flash-chat---course-e02b1",
+    "storage_bucket": "flash-chat---course-e02b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964868862280:android:ccc1417bb226a408e3437d",
+        "android_client_info": {
+          "package_name": "co.stefaniamak.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964868862280-pqqqbmi99u8voks3662kub8s2ien3nht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFfrNWb0IX8AU6Kp4_VSBmxfVVNIhOHOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964868862280-pqqqbmi99u8voks3662kub8s2ien3nht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
