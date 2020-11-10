@@ -63,9 +63,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             RoundedButton(
               color: Colors.lightBlueAccent,
-              onPressed: () {
+              onPressed: () async {
                 try {
-                  final user = _auth.signInWithEmailAndPassword(
+                  final user = await _auth.signInWithEmailAndPassword(
                       email: email, password: password);
                   if (user != null) {
                     Navigator.pushNamed(context, ChatScreen.id);
