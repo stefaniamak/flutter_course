@@ -11,7 +11,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final _firebase = FirebaseFirestore.instance;
+  final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   User loggedInUser;
   String message;
@@ -71,7 +71,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   FlatButton(
                     onPressed: () {
-                      _firebase.collection('messages').add({
+                      _firestore.collection('messages').add({
                         'sender': loggedInUser.email,
                         'text': message,
                       });
