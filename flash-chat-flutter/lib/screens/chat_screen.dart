@@ -71,6 +71,7 @@ class _ChatScreenState extends State<ChatScreen> {
               flex: 5,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: testMessagesList,
               ),
             ),
