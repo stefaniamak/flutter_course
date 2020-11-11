@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoey_flutter/widgets/task_list.dart';
+import 'package:todoey_flutter/screens/add_task_bottom_sheet.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -8,7 +9,10 @@ class TasksScreen extends StatelessWidget {
       backgroundColor: Colors.lightBlue,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlue,
-        onPressed: null,
+        onPressed: () {
+          showModalBottomSheet(
+              context: context, builder: (context) => AddTaskBottomSheet());
+        },
         tooltip: 'Increment',
         child: Icon(
           Icons.add,
