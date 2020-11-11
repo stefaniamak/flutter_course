@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todoey_flutter/widgets/task_list.dart';
 
 class TasksScreen extends StatelessWidget {
-  List<ListItemWithBox> itemList = [
-    ListItemWithBox(text: 'First (1) item'),
-    ListItemWithBox(text: 'Second (2) item'),
-    ListItemWithBox(text: 'Third (3) item'),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,33 +60,11 @@ class TasksScreen extends StatelessWidget {
                   color: Colors.white,
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(30.0))),
-              child: ListView(
-                children: itemList,
-              ),
+              child: TaskList(),
             ),
           )
         ],
       ),
-    );
-  }
-}
-
-class ListItemWithBox extends StatelessWidget {
-  const ListItemWithBox({this.text});
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          text,
-          style: TextStyle(fontWeight: FontWeight.w700),
-        ),
-        Checkbox(value: false, onChanged: null),
-      ],
     );
   }
 }
