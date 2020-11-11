@@ -12,9 +12,11 @@ class ChatScreen extends StatefulWidget {
   _ChatScreenState createState() => _ChatScreenState();
 }
 
+final _firestore = FirebaseFirestore.instance;
+
 class _ChatScreenState extends State<ChatScreen> {
-  final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
+  final messageTextController = TextEditingController();
   User loggedInUser;
   String message;
 
@@ -37,12 +39,6 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  // Future<String> getMessages() async {
-  //   final messages = await _firestore.collection('messages').get();
-  //   print(messages);
-  //   return messages;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,31 +60,7 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            StreamBuilder<QuerySnapshot>(
-              stream: _firestore.collection('messages').snapshots(),
-              builder: (context, snapsot) {
-                if (!snapsot.hasData) {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                final messages = snapsot.data.docs;
-                List<MessageBubble> messageWidgets = [];
-                for (var message in messages) {
-                  final messageSender = message.get('sender');
-                  final messageText = message.get('text');
-                  messageWidgets.add(
-                    MessageBubble(user: messageSender, message: messageText),
-                  );
-                }
-                return Expanded(
-                  child: ListView(
-                    controller: ScrollController(),
-                    children: messageWidgets,
-                  ),
-                );
-              },
-            ),
+            MessagingStream(),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
@@ -96,6 +68,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
+                      controller: messageTextController,
                       onChanged: (value) {
                         message = value;
                       },
@@ -104,6 +77,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   FlatButton(
                     onPressed: () {
+                      messageTextController.clear();
                       _firestore.collection('messages').add({
                         'sender': loggedInUser.email,
                         'text': message,
@@ -120,6 +94,37 @@ class _ChatScreenState extends State<ChatScreen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class MessagingStream extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<QuerySnapshot>(
+      stream: _firestore.collection('messages').snapshots(),
+      builder: (context, snapsot) {
+        if (!snapsot.hasData) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        final messages = snapsot.data.docs;
+        List<MessageBubble> messageWidgets = [];
+        for (var message in messages) {
+          final messageSender = message.get('sender');
+          final messageText = message.get('text');
+          messageWidgets.add(
+            MessageBubble(user: messageSender, message: messageText),
+          );
+        }
+        return Expanded(
+          child: ListView(
+            controller: ScrollController(),
+            children: messageWidgets,
+          ),
+        );
+      },
     );
   }
 }
