@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flash_chat/components/message.dart';
+import 'package:flash_chat/components/message_bubble.dart';
 
 class ChatScreen extends StatefulWidget {
   static const String id = 'chat_screen';
@@ -73,12 +73,12 @@ class _ChatScreenState extends State<ChatScreen> {
                   );
                 }
                 final messages = snapsot.data.docs;
-                List<Message> messageWidgets = [];
+                List<MessageBubble> messageWidgets = [];
                 for (var message in messages) {
                   final messageSender = message.get('sender');
                   final messageText = message.get('text');
                   messageWidgets.add(
-                    Message(user: messageSender, message: messageText),
+                    MessageBubble(user: messageSender, message: messageText),
                   );
                 }
                 return Expanded(

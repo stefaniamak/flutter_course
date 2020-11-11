@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Message extends StatelessWidget {
-  const Message({@required this.user, @required this.message});
+class MessageBubble extends StatelessWidget {
+  const MessageBubble({@required this.user, @required this.message});
 
   final String user;
   final String message;
