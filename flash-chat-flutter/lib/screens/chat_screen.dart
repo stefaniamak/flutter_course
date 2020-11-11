@@ -11,11 +11,6 @@ class ChatScreen extends StatefulWidget {
   _ChatScreenState createState() => _ChatScreenState();
 }
 
-const List<Message> testMessagesList = [
-  Message(user: 'first', message: 'first message'),
-  Message(user: 'second', message: 'second message'),
-];
-
 class _ChatScreenState extends State<ChatScreen> {
   final _firestore = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
@@ -41,10 +36,11 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  void getMessages() async {
-    final messages = await _firestore.collection('messages').get();
-    print(messages);
-  }
+  // Future<String> getMessages() async {
+  //   final messages = await _firestore.collection('messages').get();
+  //   print(messages);
+  //   return messages;
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -69,10 +65,27 @@ class _ChatScreenState extends State<ChatScreen> {
           children: <Widget>[
             Expanded(
               flex: 5,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: testMessagesList,
+              child: StreamBuilder<QuerySnapshot>(
+                stream: _firestore.collection('messages').snapshots(),
+                builder: (context, snapsot) {
+                  if (snapsot.hasData) {
+                    final messages = snapsot.data.docs;
+                    List<Message> messageWidgets = [];
+                    for (var message in messages) {
+                      final messageSender = message.get('sender');
+                      final messageText = message.get('text');
+                      messageWidgets.add(
+                        Message(user: messageSender, message: messageText),
+                      );
+                    }
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: messageWidgets,
+                    );
+                  }
+                  return Column();
+                },
               ),
             ),
             Container(
