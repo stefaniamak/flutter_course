@@ -23,7 +23,6 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-
     getCurrentUser();
   }
 
@@ -60,9 +59,7 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            MessagingStream(
-              email: loggedInUser.email,
-            ),
+            MessagingStream(email: loggedInUser.email),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
@@ -83,6 +80,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       _firestore.collection('messages').add({
                         'sender': loggedInUser.email,
                         'text': message,
+                        'timestamp': DateTime.now(),
                       });
                     },
                     child: Text(
@@ -108,20 +106,19 @@ class MessagingStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('messages').snapshots(),
+      stream:
+          _firestore.collection('messages').orderBy('timestamp').snapshots(),
       builder: (context, snapsot) {
         if (!snapsot.hasData) {
           return Center(
             child: CircularProgressIndicator(),
           );
         }
-        final messages = snapsot.data.docs;
+        final messages = snapsot.data.docs.reversed;
         List<MessageBubble> messageWidgets = [];
         for (var message in messages) {
           final messageSender = message.get('sender');
           final messageText = message.get('text');
-          // print('message sender: ' + messageSender);
-          // print('logged in user: ' + email);
           messageWidgets.add(
             MessageBubble(
               user: messageSender,
@@ -132,6 +129,7 @@ class MessagingStream extends StatelessWidget {
         }
         return Expanded(
           child: ListView(
+            reverse: true,
             controller: ScrollController(),
             children: messageWidgets,
           ),

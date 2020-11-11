@@ -16,7 +16,7 @@ class MessageBubble extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: fromLoggedinUser
               ? CrossAxisAlignment.end
               : CrossAxisAlignment.start,
@@ -41,7 +41,7 @@ class MessageBubble extends StatelessWidget {
                 child: Text(
                   message,
                   style: TextStyle(
-                      color: fromLoggedinUser ? Colors.white : Colors.black),
+                      color: fromLoggedinUser ? Colors.white : Colors.black54),
                 ),
               ),
             ),
