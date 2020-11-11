@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -63,32 +64,30 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Expanded(
-              flex: 5,
-              child: StreamBuilder<QuerySnapshot>(
-                stream: _firestore.collection('messages').snapshots(),
-                builder: (context, snapsot) {
-                  if (!snapsot.hasData) {
-                    return Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-                  final messages = snapsot.data.docs;
-                  List<Message> messageWidgets = [];
-                  for (var message in messages) {
-                    final messageSender = message.get('sender');
-                    final messageText = message.get('text');
-                    messageWidgets.add(
-                      Message(user: messageSender, message: messageText),
-                    );
-                  }
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: messageWidgets,
+            StreamBuilder<QuerySnapshot>(
+              stream: _firestore.collection('messages').snapshots(),
+              builder: (context, snapsot) {
+                if (!snapsot.hasData) {
+                  return Center(
+                    child: CircularProgressIndicator(),
                   );
-                },
-              ),
+                }
+                final messages = snapsot.data.docs;
+                List<Message> messageWidgets = [];
+                for (var message in messages) {
+                  final messageSender = message.get('sender');
+                  final messageText = message.get('text');
+                  messageWidgets.add(
+                    Message(user: messageSender, message: messageText),
+                  );
+                }
+                return Expanded(
+                  child: ListView(
+                    controller: ScrollController(),
+                    children: messageWidgets,
+                  ),
+                );
+              },
             ),
             Container(
               decoration: kMessageContainerDecoration,
