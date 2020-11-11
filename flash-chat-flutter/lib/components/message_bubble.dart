@@ -27,7 +27,12 @@ class MessageBubble extends StatelessWidget {
             ),
             Material(
               elevation: 3.0,
-              borderRadius: BorderRadius.circular(30.0),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(fromLoggedinUser ? 30.0 : 0),
+                topRight: Radius.circular(fromLoggedinUser ? 0 : 30.0),
+                bottomLeft: Radius.circular(30.0),
+                bottomRight: Radius.circular(30.0),
+              ),
               color: fromLoggedinUser
                   ? Colors.lightBlueAccent
                   : Colors.blueGrey[50],
