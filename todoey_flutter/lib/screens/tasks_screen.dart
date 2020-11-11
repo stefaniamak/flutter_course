@@ -6,9 +6,12 @@ class TasksScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.lightBlue,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.lightBlue,
         onPressed: null,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
