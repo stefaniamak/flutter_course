@@ -60,7 +60,9 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            MessagingStream(),
+            MessagingStream(
+              email: loggedInUser.email,
+            ),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
@@ -99,6 +101,10 @@ class _ChatScreenState extends State<ChatScreen> {
 }
 
 class MessagingStream extends StatelessWidget {
+  final String email;
+
+  const MessagingStream({@required this.email});
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -114,8 +120,14 @@ class MessagingStream extends StatelessWidget {
         for (var message in messages) {
           final messageSender = message.get('sender');
           final messageText = message.get('text');
+          // print('message sender: ' + messageSender);
+          // print('logged in user: ' + email);
           messageWidgets.add(
-            MessageBubble(user: messageSender, message: messageText),
+            MessageBubble(
+              user: messageSender,
+              message: messageText,
+              fromLoggedinUser: messageSender == email,
+            ),
           );
         }
         return Expanded(
