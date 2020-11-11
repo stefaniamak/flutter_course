@@ -5,59 +5,56 @@ class TasksScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlue,
+      floatingActionButton: FloatingActionButton(
+        onPressed: null,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 50.0),
+          Container(
+            padding: EdgeInsets.only(left: 50.0, top: 80.0, bottom: 60.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 60.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 40.0),
-                        child: Material(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(45.0),
-                          child: Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Icon(
-                              Icons.list,
-                              size: 60.0,
-                              color: Colors.lightBlue,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Text(
-                        'Todoey',
-                        style: TextStyle(
-                          fontSize: 60.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        '[Number] Tasks',
-                        style: TextStyle(
-                          fontSize: 17.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
+                CircleAvatar(
+                  child: Icon(
+                    Icons.list,
+                    size: 60.0,
+                    color: Colors.lightBlue,
+                  ),
+                  backgroundColor: Colors.white,
+                  radius: 40.0,
+                ),
+                SizedBox(
+                  height: 15.0,
+                ),
+                Text(
+                  'Todoey',
+                  style: TextStyle(
+                    fontSize: 60.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  '[Number] Tasks',
+                  style: TextStyle(
+                    fontSize: 17.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ],
             ),
           ),
           Expanded(
-            child: Material(
-              color: Colors.white,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(30.0)),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius:
+                      BorderRadius.vertical(top: Radius.circular(30.0))),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -72,11 +69,6 @@ class TasksScreen extends StatelessWidget {
             ),
           )
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ),
     );
   }
