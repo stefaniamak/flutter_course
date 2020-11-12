@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
+String itemTitle;
+
 class AddTaskBottomSheet extends StatelessWidget {
+  const AddTaskBottomSheet({this.addItemsToList});
+
+  final Function addItemsToList;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,15 +29,16 @@ class AddTaskBottomSheet extends StatelessWidget {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
+              // onChanged: (fieldValue) {
+              //   itemTitle = fieldValue;
+              // },
             ),
             SizedBox(
               height: 20.0,
             ),
             FlatButton(
               color: Colors.lightBlueAccent,
-              onPressed: () {
-                // Code for on Pressed button
-              },
+              onPressed: addItemsToList,
               child: Text(
                 'Add',
                 style: TextStyle(color: Colors.white),

@@ -21,9 +21,9 @@ class _TaskListState extends State<TaskList> {
         return TaskTile(
           text: itemList[index].title,
           isChecked: itemList[index].isDone,
-          onPressed: (value) {
+          checkboxCallback: (checkBoxState) {
             setState(() {
-              itemList[index].isDone = value;
+              itemList[index].done();
             });
           },
         );

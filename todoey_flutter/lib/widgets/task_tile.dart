@@ -4,12 +4,10 @@ class TaskTile extends StatelessWidget {
   // const ListItemWithBox({this.text});
 
   final String text;
-  final Function onPressed;
+  final Function checkboxCallback;
   final bool isChecked;
 
-  const TaskTile({this.text, this.onPressed, this.isChecked});
-
-  void checkBoxCallback(bool checkboxState) {}
+  const TaskTile({this.text, this.checkboxCallback, this.isChecked});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +20,7 @@ class TaskTile extends StatelessWidget {
       ),
       trailing: Checkbox(
         value: isChecked,
-        onChanged: onPressed,
+        onChanged: checkboxCallback,
       ),
     );
   }
