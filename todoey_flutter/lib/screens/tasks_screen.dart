@@ -23,8 +23,8 @@ class _TasksScreenState extends State<TasksScreen> {
                 bottom: MediaQuery.of(context).viewInsets.bottom,
               ),
               child: AddTaskBottomSheet(
-                addItemsToList: () {
-                  print('aa');
+                addItemsToList: (value) {
+                  print(value);
                 },
               ),
             ),

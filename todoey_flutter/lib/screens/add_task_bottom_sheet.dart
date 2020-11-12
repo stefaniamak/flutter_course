@@ -29,16 +29,16 @@ class AddTaskBottomSheet extends StatelessWidget {
             TextField(
               autofocus: true,
               textAlign: TextAlign.center,
-              // onChanged: (fieldValue) {
-              //   itemTitle = fieldValue;
-              // },
+              onChanged: (fieldValue) {
+                itemTitle = fieldValue;
+              },
             ),
             SizedBox(
               height: 20.0,
             ),
             FlatButton(
               color: Colors.lightBlueAccent,
-              onPressed: addItemsToList,
+              onPressed: () => addItemsToList(itemTitle),
               child: Text(
                 'Add',
                 style: TextStyle(color: Colors.white),
