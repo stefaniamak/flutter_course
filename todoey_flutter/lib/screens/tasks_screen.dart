@@ -31,6 +31,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   setState(() {
                     listData.addItem(newItemTitle);
                   });
+                  Navigator.pop(context);
                 },
               ),
             ),
@@ -70,7 +71,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '[Number] Tasks',
+                  '${listData.getList().length} Tasks',
                   style: TextStyle(
                     fontSize: 17.0,
                     color: Colors.white,
@@ -89,11 +90,6 @@ class _TasksScreenState extends State<TasksScreen> {
                       BorderRadius.vertical(top: Radius.circular(30.0))),
               child: TaskList(
                 listData: listData.getList(),
-                updateList: (index) {
-                  setState(() {
-                    listData.getList()[index].done();
-                  });
-                },
               ),
             ),
           )
