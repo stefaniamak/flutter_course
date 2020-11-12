@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todoey_flutter/widgets/task_list.dart';
 import 'package:todoey_flutter/screens/add_task_bottom_sheet.dart';
+import 'package:todoey_flutter/utilities/list_data.dart';
 
 class TasksScreen extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class TasksScreen extends StatefulWidget {
 }
 
 class _TasksScreenState extends State<TasksScreen> {
+  ListData listData = ListData();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +28,9 @@ class _TasksScreenState extends State<TasksScreen> {
               child: AddTaskBottomSheet(
                 addItemsToList: (newItemTitle) {
                   print(newItemTitle);
+                  setState(() {
+                    listData.addItem(newItemTitle);
+                  });
                 },
               ),
             ),
@@ -81,7 +87,14 @@ class _TasksScreenState extends State<TasksScreen> {
                   color: Colors.white,
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(30.0))),
-              child: TaskList(),
+              child: TaskList(
+                listData: listData.getList(),
+                updateList: (index) {
+                  setState(() {
+                    listData.getList()[index].done();
+                  });
+                },
+              ),
             ),
           )
         ],
