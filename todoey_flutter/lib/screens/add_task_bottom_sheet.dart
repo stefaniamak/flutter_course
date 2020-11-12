@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-
-String itemTitle;
+import 'package:todoey_flutter/utilities/list_data.dart';
+import 'package:provider/provider.dart';
 
 class AddTaskBottomSheet extends StatelessWidget {
-  const AddTaskBottomSheet({this.addItemsToList});
-
-  final Function addItemsToList;
-
   @override
   Widget build(BuildContext context) {
+    String itemTitle;
     return Container(
       padding: EdgeInsets.symmetric(
         horizontal: 40.0,
@@ -38,7 +35,15 @@ class AddTaskBottomSheet extends StatelessWidget {
             ),
             FlatButton(
               color: Colors.lightBlueAccent,
-              onPressed: () => addItemsToList(itemTitle),
+              onPressed: () {
+                print('add button pressed');
+                print(Provider.of<ListData>(context, listen: false).getList());
+                if (itemTitle != null) {
+                  Provider.of<ListData>(context, listen: false)
+                      .addTask(itemTitle);
+                }
+                Navigator.pop(context);
+              },
               child: Text(
                 'Add',
                 style: TextStyle(color: Colors.white),

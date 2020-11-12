@@ -2,15 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:todoey_flutter/widgets/task_list.dart';
 import 'package:todoey_flutter/screens/add_task_bottom_sheet.dart';
 import 'package:todoey_flutter/utilities/list_data.dart';
+import 'package:provider/provider.dart';
 
-class TasksScreen extends StatefulWidget {
-  @override
-  _TasksScreenState createState() => _TasksScreenState();
-}
-
-class _TasksScreenState extends State<TasksScreen> {
-  ListData listData = ListData();
-
+class TasksScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,15 +19,7 @@ class _TasksScreenState extends State<TasksScreen> {
               padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom,
               ),
-              child: AddTaskBottomSheet(
-                addItemsToList: (newItemTitle) {
-                  print(newItemTitle);
-                  setState(() {
-                    listData.addItem(newItemTitle);
-                  });
-                  Navigator.pop(context);
-                },
-              ),
+              child: AddTaskBottomSheet(),
             ),
           );
         },
@@ -71,7 +57,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   ),
                 ),
                 Text(
-                  '${listData.getList().length} Tasks',
+                  '${Provider.of<ListData>(context).getList().length} Tasks',
                   style: TextStyle(
                     fontSize: 17.0,
                     color: Colors.white,
@@ -88,9 +74,7 @@ class _TasksScreenState extends State<TasksScreen> {
                   color: Colors.white,
                   borderRadius:
                       BorderRadius.vertical(top: Radius.circular(30.0))),
-              child: TaskList(
-                listData: listData.getList(),
-              ),
+              child: TaskList(),
             ),
           )
         ],

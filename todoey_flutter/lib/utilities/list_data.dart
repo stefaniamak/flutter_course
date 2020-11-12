@@ -1,17 +1,21 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:todoey_flutter/models/task.dart';
 
-class ListData {
-  List<Task> itemList = [
+class ListData extends ChangeNotifier {
+  List<Task> _itemList = [
     Task(title: 'First (1) item', isDone: false),
     Task(title: 'Second (2) item', isDone: false),
     Task(title: 'Third (3) item', isDone: false),
   ];
-  void addItem(String title) {
-    itemList.add(Task(title: title));
+
+  UnmodifiableListView<Task> getList() {
+    return UnmodifiableListView(_itemList);
   }
 
-  List<Task> getList() {
-    return itemList;
+  void addTask(String title) {
+    _itemList.add(Task(title: title, isDone: false));
+    notifyListeners();
   }
 }
