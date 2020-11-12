@@ -11,7 +11,15 @@ class TasksScreen extends StatelessWidget {
         backgroundColor: Colors.lightBlue,
         onPressed: () {
           showModalBottomSheet(
-              context: context, builder: (context) => AddTaskBottomSheet());
+            context: context,
+            isScrollControlled: true,
+            builder: (context) => SingleChildScrollView(
+              padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom,
+              ),
+              child: AddTaskBottomSheet(),
+            ),
+          );
         },
         tooltip: 'Increment',
         child: Icon(
