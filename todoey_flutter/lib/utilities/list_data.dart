@@ -16,6 +16,7 @@ class ListData extends ChangeNotifier {
 
   void addTask(String title) {
     _itemList.add(Task(title: title, isDone: false));
+    notifyListeners();
   }
 
   void isDone(Task task) {
