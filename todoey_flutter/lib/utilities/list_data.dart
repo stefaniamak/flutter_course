@@ -18,8 +18,8 @@ class ListData extends ChangeNotifier {
     _itemList.add(Task(title: title, isDone: false));
   }
 
-  void isDone(int index) {
-    _itemList[index].done();
+  void isDone(Task task) {
+    task.done();
     notifyListeners();
   }
 }
