@@ -22,4 +22,9 @@ class ListData extends ChangeNotifier {
     task.done();
     notifyListeners();
   }
+
+  void deleteItem(Task task) {
+    _itemList.remove(task);
+    notifyListeners();
+  }
 }

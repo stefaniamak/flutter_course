@@ -36,7 +36,6 @@ class AddTaskBottomSheet extends StatelessWidget {
             FlatButton(
               color: Colors.lightBlueAccent,
               onPressed: () {
-                print('add button pressed');
                 print(Provider.of<ListData>(context, listen: false).getList());
                 if (itemTitle != null) {
                   Provider.of<ListData>(context, listen: false)
